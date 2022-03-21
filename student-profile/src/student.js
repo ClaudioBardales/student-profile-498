@@ -16,7 +16,7 @@ function Student() {
     studentProfile();
   }, []);
 
-  const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+  //   const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
   const displayProfile = profile.map((students) => {
     return (
