@@ -1,8 +1,13 @@
+import React from 'react';
+import GlobalStyle from './globalStyles';
+import Student from './student';
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello World</h1>
+        <GlobalStyle />
+        <Student />
       </header>
     </div>
   );
