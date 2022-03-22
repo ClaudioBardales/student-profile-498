@@ -1,16 +1,22 @@
 import React from 'react';
 import GlobalStyle from './globalStyles';
+import styled from 'styled-components';
 import Student from './student';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <GlobalStyle />
-        <Student />
-      </header>
-    </div>
+    <Container>
+      <GlobalStyle />
+      <Student />
+    </Container>
   );
 }
+
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default App;

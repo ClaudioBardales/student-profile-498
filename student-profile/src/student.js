@@ -32,7 +32,15 @@ function Student() {
       </div>
     );
   });
-  return <div>{profile && displayProfile}</div>;
+  return <Profile>{profile && displayProfile}</Profile>;
 }
+
+const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+`;
 
 export default Student;
