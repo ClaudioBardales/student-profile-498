@@ -10,7 +10,6 @@ function Student() {
       const response = await axios(
         'https://api.hatchways.io/assessment/students'
       );
-      console.log(response.data.students);
       setProfiles(response.data.students);
     };
     studentProfile();
@@ -21,10 +20,10 @@ function Student() {
   const displayProfile = profile.map((students) => {
     return (
       <StudentContainer>
-        <div className="image">
+        <Image>
           <img src={students.pic} alt="img" />
-        </div>
-        <div className="information">
+        </Image>
+        <div>
           <h1>
             {students.firstName} {students.lastName}
           </h1>
@@ -40,10 +39,11 @@ function Student() {
 }
 
 const StudentContainer = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  gap: 35px;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -54,12 +54,23 @@ const Profile = styled.div`
   width: 900px;
   height: 700px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  gap: 25px;
   background-color: white;
-  border: 1px solid red;
   &::-webkit-scrollbar {
     border-radius: 5px;
+  }
+`;
+
+const Image = styled.div`
+  border: 1px solid grey;
+  border-radius: 50%;
+  img {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
