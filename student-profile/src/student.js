@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-function Student() {
+const Student = () => {
   const [profile, setProfiles] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,11 @@ function Student() {
     studentProfile();
   }, []);
 
-  //   const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+  const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+  const SearchBar = () => {
+    return <h1>SEARCH BAR</h1>;
+  };
 
   const displayProfile = profile.map((students) => {
     return (
@@ -23,20 +27,20 @@ function Student() {
         <Image>
           <img src={students.pic} alt="img" />
         </Image>
-        <div>
+        <Information>
           <h1>
             {students.firstName} {students.lastName}
           </h1>
           <p>Email: {students.email}</p>
           <p>Company: {students.company}</p>
           <p>Skill: {students.skill}</p>
-          <p>Average: {students.grade}%</p>
-        </div>
+          <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
+        </Information>
       </StudentContainer>
     );
   });
   return <Profile>{profile && displayProfile}</Profile>;
-}
+};
 
 const StudentContainer = styled.div`
   width: 80%;
@@ -52,7 +56,7 @@ const Profile = styled.div`
   overflow: scroll;
   display: flex;
   width: 900px;
-  height: 700px;
+  height: 750px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -60,6 +64,12 @@ const Profile = styled.div`
   background-color: white;
   &::-webkit-scrollbar {
     border-radius: 5px;
+  }
+`;
+
+const Information = styled.div`
+  h1 {
+    font-size: 2.5rem;
   }
 `;
 
