@@ -1,14 +1,12 @@
 import React from 'react';
 import GlobalStyle from './globalStyles';
 import styled from 'styled-components';
-import Student from './student';
-import SearchBar from './searchbar';
+import StudentContainer from './StudentContainer';
 function App() {
   return (
     <Container>
       <GlobalStyle />
-      <SearchBar />
-      <Student />
+      <StudentContainer />
     </Container>
   );
 }

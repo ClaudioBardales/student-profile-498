@@ -17,13 +17,9 @@ const Student = () => {
 
   const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
-  const SearchBar = () => {
-    return <h1>SEARCH BAR</h1>;
-  };
-
   const displayProfile = profile.map((students) => {
     return (
-      <StudentContainer>
+      <Wrapper>
         <Image>
           <img src={students.pic} alt="img" />
         </Image>
@@ -36,19 +32,18 @@ const Student = () => {
           <p>Skill: {students.skill}</p>
           <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
         </Information>
-      </StudentContainer>
+      </Wrapper>
     );
   });
   return <Profile>{profile && displayProfile}</Profile>;
 };
 
-const StudentContainer = styled.div`
-  width: 80%;
+const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  gap: 35px;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  width: 80%;
 `;
 
 const Profile = styled.div`
@@ -79,7 +74,7 @@ const Image = styled.div`
   img {
     width: 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   }
 `;
