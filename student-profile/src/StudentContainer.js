@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Student from './student';
-import SearchBar1 from './SearchBar/SearchBar1';
+import Profile from './Profile';
 
 const Container = () => {
   return (
     <StudentContainer>
-      <SearchBar1 />
-      <Student />
+      <Profile />
     </StudentContainer>
   );
 };

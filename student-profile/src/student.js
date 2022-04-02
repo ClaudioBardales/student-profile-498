@@ -35,31 +35,16 @@ const Student = () => {
       </Wrapper>
     );
   });
-  return <Profile>{profile && displayProfile}</Profile>;
+  return <div>{profile && displayProfile}</div>;
 };
 
 const Wrapper = styled.div`
   display: flex;
+  border: 1px solid red;
   align-items: center;
   justify-content: flex-start;
   gap: 40px;
-  width: 80%;
-`;
-
-const Profile = styled.div`
-  border-radius: 10px;
-  overflow: scroll;
-  display: flex;
-  width: 900px;
-  height: 750px;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 25px;
-  background-color: white;
-  &::-webkit-scrollbar {
-    border-radius: 5px;
-  }
+  width: 100%;
 `;
 
 const Information = styled.div`
