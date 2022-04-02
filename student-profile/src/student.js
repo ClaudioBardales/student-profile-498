@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import SearchBar1 from './SearchBar/SearchBar1';
 
-const Student = () => {
+const StudentProfiles = () => {
   const [profile, setProfiles] = useState([]);
 
   useEffect(() => {
@@ -19,30 +20,48 @@ const Student = () => {
 
   const displayProfile = profile.map((students) => {
     return (
-      <Wrapper>
-        <Image>
-          <img src={students.pic} alt="img" />
-        </Image>
-        <Information>
-          <h1>
-            {students.firstName} {students.lastName}
-          </h1>
-          <p>Email: {students.email}</p>
-          <p>Company: {students.company}</p>
-          <p>Skill: {students.skill}</p>
-          <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
-        </Information>
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <Image>
+            <img src={students.pic} alt="img" />
+          </Image>
+          <Information>
+            <h1>
+              {students.firstName} {students.lastName}
+            </h1>
+            <p>Email: {students.email}</p>
+            <p>Company: {students.company}</p>
+            <p>Skill: {students.skill}</p>
+            <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
+          </Information>
+        </Wrapper>
+      </Container>
     );
   });
   return <div>{profile && displayProfile}</div>;
 };
 
+const Student = () => {
+  return (
+    <>
+      <SearchBar1 />
+      <StudentProfiles />
+    </>
+  );
+};
+
+const Container = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Wrapper = styled.div`
   display: flex;
-  border: 1px solid red;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 40px;
   width: 100%;
 `;
