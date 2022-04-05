@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import SearchBar1 from './SearchBar/SearchBar1';
 
 const StudentProfiles = () => {
   const [profile, setProfiles] = useState([]);
@@ -18,37 +17,71 @@ const StudentProfiles = () => {
 
   const gradeAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
-  const displayProfile = profile.map((students) => {
-    return (
-      <Container>
-        <Wrapper>
-          <Image>
-            <img src={students.pic} alt="img" />
-          </Image>
-          <Information>
-            <h1>
-              {students.firstName} {students.lastName}
-            </h1>
-            <p>Email: {students.email}</p>
-            <p>Company: {students.company}</p>
-            <p>Skill: {students.skill}</p>
-            <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
-          </Information>
-        </Wrapper>
-      </Container>
-    );
-  });
+  const displayProfile = profile
+    .filter((item) => {
+      if (searchInput === '') {
+        return item;
+      } else {
+        item.students.firstName
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      }
+    })
+    .map((students) => {
+      return (
+        <Container>
+          <Wrapper>
+            <Image>
+              <img src={students.pic} alt="img" />
+            </Image>
+            <Information>
+              <h1>
+                {students.firstName} {students.lastName}
+              </h1>
+              <p>Email: {students.email}</p>
+              <p>Company: {students.company}</p>
+              <p>Skill: {students.skill}</p>
+              <p>Average: {Math.round(gradeAverage(students.grades))}%</p>
+            </Information>
+          </Wrapper>
+        </Container>
+      );
+    });
   return <div>{profile && displayProfile}</div>;
 };
 
-const Student = () => {
+export const Student = () => {
+  const [searchInput, setSearchInput] = useState('');
+
   return (
     <>
-      <SearchBar1 />
+      <Test>
+        <input type="text" onChange={(e) => setSearchInput(e.target.value)} />
+      </Test>
       <StudentProfiles />
     </>
   );
 };
+
+const Test = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  min-height: 10vh;
+  position: sticky;
+  top: 0;
+  input {
+    width: 100%;
+    padding: 1rem;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    outline: none;
+    font-size: 30px;
+  }
+`;
 
 const Container = styled.div`
   width: 80%;

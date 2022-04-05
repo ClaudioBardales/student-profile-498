@@ -10,6 +10,8 @@ Make the List of the student profiles scrollable so that the user can scroll up 
 
 Then create a search bar that filters the search result of the student that the user wants to look up. -> WORK IN PROGRESS
 
+- Trying to see how to pass a state to a different component that way we can filter out the items.
+
 Then try to go toggle the profile for more information. -> WORK IN PROGRESS, MIGHT WORK ON THIS NEXT.
 
 Also wanted an input to add a tag to the profile.
